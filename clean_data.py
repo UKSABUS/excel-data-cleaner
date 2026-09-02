@@ -31,7 +31,7 @@ def clean_dataframe(df):
     )
 
     # Remove unnecessary spaces from text cells
-    for column in df.select_dtypes(include="object").columns:
+    for column in df.select_dtypes(include=["object", "string"]).columns:
         df[column] = df[column].apply(
             lambda value: value.strip() if isinstance(value, str) else value
         )

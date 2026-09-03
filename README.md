@@ -1,77 +1,171 @@
 # Excel Data Cleaner 🧹📊
 
-A Python tool for cleaning and standardizing messy CSV and Excel datasets.
+A lightweight Python tool for cleaning and standardizing CSV and Excel datasets.
+
+This project automates common data-cleaning tasks such as removing duplicate records, standardizing column names, trimming unnecessary whitespace, removing completely empty rows, and generating a simple cleaning report.
 
 ## Features
 
-- Remove duplicate records
-- Standardize column names
-- Remove unnecessary whitespace
-- Remove completely empty rows
-- Detect missing values
-- Generate a cleaning report
-- Export cleaned CSV or Excel files
+* Remove duplicate rows
+* Standardize column names
+* Trim unnecessary whitespace from text fields
+* Remove completely empty rows
+* Detect missing values
+* Generate a cleaning summary
+* Export cleaned datasets to CSV or Excel
+* Supports reusable cleaning functions
+* Includes automated tests with `pytest`
 
 ## Technologies
 
-- Python
-- Pandas
-- OpenPyXL
+* Python
+* Pandas
+* OpenPyXL
+* Pytest
 
 ## Project Structure
 
-    excel-data-cleaner/
-    │
-    ├── clean_data.py
-    ├── requirements.txt
-    ├── sample.csv
-    ├── README.md
-    └── .gitignore
+```text
+excel-data-cleaner/
+│
+├── clean_data.py
+├── sample.csv
+├── cleaned_output.csv
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+└── tests/
+    └── test_clean_data.py
+```
 
 ## Installation
 
-Clone the repository and install the required packages:
+Clone the repository:
 
-    pip install -r requirements.txt
+```bash
+git clone https://github.com/UKSABUS/excel-data-cleaner.git
+cd excel-data-cleaner
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
-For CSV files:
+The tool works from the command line.
 
-    python clean_data.py sample.csv cleaned_output.csv
+### Clean a CSV file
 
-For Excel files:
+```bash
+python clean_data.py sample.csv cleaned_output.csv
+```
 
-    python clean_data.py input.xlsx cleaned_output.xlsx
+### Clean an Excel file
+
+```bash
+python clean_data.py input.xlsx cleaned_output.xlsx
+```
+
+The program loads the dataset, applies the cleaning operations, generates a summary report, and saves the cleaned dataset.
 
 ## Example
 
-The included `sample.csv` contains intentionally messy data,
-including duplicate records, unnecessary whitespace, and missing values.
+### Input
 
-The program processes the dataset and produces a cleaned output file.
+```text
+Name,Email,Age,City
+ Ali ,ALI@example.com,22, Tehran
+Sara,sara@example.com,24,Shiraz
+Ali,ALI@example.com,22, Tehran
+ Reza ,reza@example.com,27,Tabriz
+Maryam,maryam@example.com,,Isfahan
+Sara,sara@example.com,24,Shiraz
+```
+
+### Output
+
+```text
+Cleaning completed successfully!
+----------------------------------------
+Original rows:      6
+Final rows:         4
+Duplicates removed: 2
+Columns:            4
+Missing cells:      1
+----------------------------------------
+Saved to: cleaned_output.csv
+```
 
 ## Cleaning Report
 
-The program reports:
+| Metric             | Result |
+| ------------------ | -----: |
+| Original rows      |      6 |
+| Final rows         |      4 |
+| Duplicates removed |      2 |
+| Columns            |      4 |
+| Missing cells      |      1 |
 
-- Original number of rows
-- Final number of rows
-- Number of duplicates removed
-- Number of columns
-- Number of missing cells
+## What the Tool Does
 
-## Purpose
+The cleaning pipeline performs the following operations:
 
-This project demonstrates practical Python skills in:
+1. Loads CSV or Excel data into a Pandas DataFrame.
+2. Standardizes column names.
+3. Removes unnecessary whitespace from text values.
+4. Removes completely empty rows.
+5. Detects and removes duplicate records.
+6. Calculates basic dataset statistics.
+7. Saves the cleaned dataset.
 
-- Data cleaning
-- Data preprocessing
-- Pandas
-- CSV/Excel processing
-- Basic automation
+## Testing
 
-## Author
+The project includes automated tests covering the main cleaning operations.
 
-Microbiology graduate interested in Python,
-data analysis, scientific computing, and bioinformatics.
+Run the test suite with:
+
+```bash
+python -m pytest
+```
+
+Expected result:
+
+```text
+4 passed
+```
+
+## Example Use Cases
+
+This tool can be useful for:
+
+* Cleaning survey datasets
+* Preparing CSV files for analysis
+* Removing duplicate customer records
+* Standardizing exported spreadsheets
+* Preparing datasets for data analysis
+* Basic preprocessing before machine learning workflows
+
+## Future Improvements
+
+Planned improvements include:
+
+* Missing-value handling strategies
+* Automatic data-type detection
+* More detailed cleaning reports
+* Support for larger datasets
+* Configurable cleaning options
+* Batch processing of multiple files
+* Optional graphical interface
+
+## About
+
+This project was developed as a practical Python portfolio project focused on data cleaning, automation, and reproducible data-processing workflows.
+
+## License
+
+This project is licensed under the MIT License.
+
